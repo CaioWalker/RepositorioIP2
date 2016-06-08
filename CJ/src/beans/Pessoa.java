@@ -52,7 +52,7 @@ public class Pessoa {
 	
 	public Boolean equals(Pessoa p){
 		if(p!=null){
-			if(p.getNome()==this.nome&&p.getCpf()==this.cpf&&p.getEndereco()==this.endereco&&p.getEmail()==this.email){
+			if(p.getNome().equals(this.nome)&&p.getCpf().equals(this.cpf)&&p.getEndereco().equals(this.endereco)&&p.getEmail().equals(this.email)){
 				return true;
 			}
 			else{
@@ -65,3 +65,4 @@ public class Pessoa {
 	}
 
 }
+

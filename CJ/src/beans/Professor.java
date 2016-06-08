@@ -1,50 +1,19 @@
 package beans;
 
 public class Professor extends Pessoa {
-	private int nDisciplinas;
-	private String[] disciplinas=new String[1];
 	private int nFormacao;
 	private Formacao[] formacoes = new Formacao[1];
 	private int nAreasInt;
-	private String[] areasInt=new String[1];
-	private int nCursos;
-	private String[] cursos;
-	//private Horario horario;
+	private AreasInt[] areasInt=new AreasInt[1];
+	private Boolean coordenador;
 	
 	public Professor(String nome,String cpf,String endereco,String email){
 		super(nome,cpf,endereco,email);
-		this.nDisciplinas=0;
-		this.nCursos=0;
+		this.setCoordenador(false);
+		this.nAreasInt=0;
 		this.nFormacao=0;
 	}
-	
-	public void cadastrarDisciplina(Disciplina d){
-		if(nDisciplinas==0&&disciplinas[0]==null){
-			this.disciplinas[nDisciplinas]=d.getNome();
-			this.nDisciplinas++;
-		}
-		else{
-			String[] temp = new String[nDisciplinas+1];
-			for(int i=0;i<=nDisciplinas;i++){
-				temp[i]=disciplinas[i];
-			}
-			this.disciplinas= new String[nDisciplinas+1];
-			for(int i=0;i<=nDisciplinas;i++){
-				disciplinas[i]=temp[i];
-			}
-			this.disciplinas[nDisciplinas]=d.getNome();
-			this.nDisciplinas++;
-		}
-	}
-	
-	public void imprimeDisciplinas(){
-		System.out.println("\nDisciplinas:");
-		for(int i =0;i<nDisciplinas;i++){
-			if(this.disciplinas[i]!=null){
-				System.out.println(disciplinas[i]);
-			}
-		}	
-	}
+
 	
 	public void addFormacao(String titulo, String descricao){
 		if(nFormacao==0&&formacoes[0]==null){
@@ -87,21 +56,21 @@ public class Professor extends Pessoa {
 		}	
 	}
 	
-	public void addAreasInt(String area){
+	public void addAreasInt(String titulo,String descricao){
 		if(nAreasInt==0&&areasInt[0]==null){
-			this.areasInt[nAreasInt]=area;
+			this.areasInt[nAreasInt]=new AreasInt(titulo,descricao);
 			this.nAreasInt++;
 		}
 		else{
-			String[] temp = new String[nAreasInt+1];
+			AreasInt[] temp = new AreasInt[nAreasInt+1];
 			for(int i=0;i<=nAreasInt;i++){
 				temp[i]=areasInt[i];
 			}
-			this.areasInt= new String[nAreasInt+1];
+			this.areasInt= new AreasInt[nAreasInt+1];
 			for(int i=0;i<=nAreasInt;i++){
 				areasInt[i]=temp[i];
 			}
-			this.areasInt[nAreasInt]=area;
+			this.areasInt[nAreasInt]=new AreasInt(titulo,descricao);
 			this.nAreasInt++;
 		}
 	}
@@ -114,43 +83,15 @@ public class Professor extends Pessoa {
 			}
 		}	
 	}
-	
-	public void addcurso(Curso c){
-		if(nCursos==0&&cursos[0]==null){
-			this.cursos[nCursos]=c.getNome();
-			this.nCursos++;
-		}
-		else{
-			String[] temp = new String[nCursos+1];
-			for(int i=0;i<=nCursos;i++){
-				temp[i]=cursos[i];
-			}
-			this.cursos= new String[nCursos+1];
-			for(int i=0;i<=nCursos;i++){
-				cursos[i]=temp[i];
-			}
-			this.cursos[nCursos]=c.getNome();
-			this.nCursos++;
-		}	
+
+
+	public Boolean getCoordenador() {
+		return coordenador;
 	}
-	
-	public void imprimeCursos(){
-		System.out.println("\nCursos:");
-		for(int i =0;i<nCursos;i++){
-			if(this.cursos[i]!=null){
-				System.out.println(cursos[i]);
-			}
-		}	
-	}
-	
-	public Boolean checarDisc(String nome){
-		Boolean resultado=false;
-		for(int i=0;i<nDisciplinas;i++){
-			if(this.disciplinas[i].equals(nome)){
-				resultado=true;
-			}
-		}
-		return resultado;
+
+
+	public void setCoordenador(Boolean coordenador) {
+		this.coordenador = coordenador;
 	}
 		
 	
