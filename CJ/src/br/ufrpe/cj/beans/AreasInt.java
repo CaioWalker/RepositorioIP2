@@ -1,14 +1,18 @@
-package beans;
+package br.ufrpe.cj.beans;
 
-public class Formacao {
+import java.io.Serializable;
+
+public class AreasInt implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String titulo;
 	private String descricao;
-	private Boolean estado;
 	
-	public Formacao(String titulo, String descricao){
+	public AreasInt(String titulo, String descricao){
 		this.setTitulo(titulo);
 		this.setDescricao(descricao);
-		this.setEstado(false);
 	}
 
 	public String getTitulo() {
@@ -26,18 +30,12 @@ public class Formacao {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-
-	public Boolean getEstado() {
-		return estado;
-	}
-
-	public void setEstado(Boolean estado) {
-		this.estado = estado;
-	}
 	
 	public String toString(){
-		String resultado = "\nTitulo: "+this.titulo+"\n"+this.descricao;
+		String resultado ="\n"+this.titulo+"\n"+this.descricao;
 		return resultado;
 	}
+	
+	
 
 }

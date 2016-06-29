@@ -1,16 +1,24 @@
-package beans;
+package br.ufrpe.cj.beans;
 
-public class Pessoa {
+import java.io.Serializable;
+
+public class Pessoa implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String nome;
 	private String cpf;
 	private String endereco;
 	private String email;
+	private String senha;
 	
-	public Pessoa(String nome,String cpf,String endereco,String email){
+	public Pessoa(String nome,String cpf,String endereco,String email,String senha){
 		this.setNome(nome);
 		this.setEndereco(endereco);
 		this.setCpf(cpf);
 		this.setEmail(email);
+		this.senha=senha;
 	}
 
 	public String getNome() {
@@ -62,6 +70,14 @@ public class Pessoa {
 		else{
 			return false;
 		}
+	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 
 }

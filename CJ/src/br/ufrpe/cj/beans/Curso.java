@@ -1,17 +1,20 @@
-package beans;
+package br.ufrpe.cj.beans;
 
-public class Curso {
+import java.io.Serializable;
+
+public class Curso implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String nome;
 	private String descricao;
-	private int nPeriodos;
-	private Periodo periodos[]=new Periodo[1];
 	private Professor coordenador;	
 	private String codigo;
 	
 	public Curso(String nome,String descricao){
 		this.setNome(nome);
 		this.setDescricao(descricao);
-		nPeriodos=0;
 	}
 
 	public String getNome() {
@@ -35,13 +38,6 @@ public class Curso {
 		this.descricao=descricao;
 	}
 	
-	public int getNPeriodos(){
-		return this.nPeriodos;
-	}
-	
-	public Periodo getPeriodo(int n){
-		return periodos[n];
-	}
 	
 	public Professor getCoordenador() {
 		return coordenador;
@@ -54,8 +50,14 @@ public class Curso {
 	
 	
 	public String toString(){
-		String resultado="\nNome: "+this.nome+"\nCoordenador: "+this.coordenador.getNome()
-		+"\nDescricao: "+this.descricao;
+		String resultado;
+		if(this.coordenador!=null){
+			resultado ="\nNome: "+this.nome+"\nCoordenador: "+this.coordenador.getNome()
+			+"\nDescricao: "+this.descricao;
+		}
+		else{
+			resultado ="\nNome: "+this.nome+"\nCoordenador: indefinido"+"\nDescricao: "+this.descricao;
+		}
 		return resultado;
 	}
 
@@ -66,5 +68,18 @@ public class Curso {
 	public void setCodigo(String codigo) {
 		this.codigo = codigo;
 	}
-
+	
+	public Boolean equals(Curso c){
+		if(c!=null){
+			if(c.getNome().equals(this.nome)&&c.getCodigo().equals(this.codigo)&&c.getCoordenador().equals(this.coordenador)&&c.getDescricao().equals(this.descricao)){
+				return true;
+			}
+			else{
+				return false;
+			} 	
+		}
+		else{
+			return false;
+		}
+	}
 }
